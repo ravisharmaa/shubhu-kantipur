@@ -30,7 +30,7 @@ $this->group(['prefix'=>'admin/',           'as'=>'admin.',                  'na
 
     /*Site Configs*/
     $this->get('site-configs/edit',         ['as'=>'site_configs.edit',         'uses'=>'SiteConfigController@edit']);
-    $this->get('site-configs/save',         ['as'=>'site_configs.save',         'uses'=>'SiteConfigController@edit']);
+    $this->post('site-configs/save',         ['as'=>'site_configs.save',         'uses'=>'SiteConfigController@save']);
 
 
 
