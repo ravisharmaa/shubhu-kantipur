@@ -29,7 +29,6 @@ $this->group(['prefix'=>'admin/',           'as'=>'admin.',                  'na
     $this->delete('banner/delete',          ['as'=>'banner.delete',             'uses'=>'BannerController@delete']);
 
     /*Site Configs*/
-
     $this->get('site-configs/edit',         ['as'=>'site_configs.edit',         'uses'=>'SiteConfigController@edit']);
     $this->get('site-configs/save',         ['as'=>'site_configs.save',         'uses'=>'SiteConfigController@edit']);
 
