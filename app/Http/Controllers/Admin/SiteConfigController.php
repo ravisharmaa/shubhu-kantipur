@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\AdminBaseController;
 use App\Model\SiteConfigs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 class SiteConfigController extends AdminBaseController
@@ -35,7 +36,7 @@ class SiteConfigController extends AdminBaseController
 
     private function saveValues($request)
     {
-       SiteConfigs::create([
+        SiteConfigs::create([
             'about_desc'     => $request->get('footer_desc'),
             'fb_link'        => $request->get('fb_link'),
             'g_plus'         => $request->get('g_plus'),
@@ -57,5 +58,7 @@ class SiteConfigController extends AdminBaseController
         $data->save();
         return redirect()->back();
     }
+
+
 
 }

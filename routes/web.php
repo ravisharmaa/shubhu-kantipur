@@ -29,9 +29,17 @@ $this->group(['prefix'=>'admin/',           'as'=>'admin.',                  'na
     $this->delete('banner/delete',          ['as'=>'banner.delete',             'uses'=>'BannerController@delete']);
 
     /*Site Configs*/
-    $this->get('site-configs/edit',                ['as'=>'site_configs.edit',           'uses'=>'SiteConfigController@edit']);
-    $this->post('site-configs/save',               ['as'=>'site_configs.save',           'uses'=>'SiteConfigController@save']);
-    $this->put('site-configs/update/{id}',         ['as'=>'site_configs.update',         'uses'=>'SiteConfigController@save']);
+    $this->get('site-configs/edit',         ['as'=>'site_configs.edit',           'uses'=>'SiteConfigController@edit']);
+    $this->post('site-configs/save',        ['as'=>'site_configs.save',           'uses'=>'SiteConfigController@save']);
+    $this->put('site-configs/update/{id}',  ['as'=>'site_configs.update',         'uses'=>'SiteConfigController@save']);
+
+    /*Gallery Mgmt Routes*/
+    $this->get('gallery/index',              ['as'=>'gallery.index',              'uses'=>'GalleryController@index']);
+    $this->get('gallery/create',             ['as'=>'gallery.create',             'uses'=>'GalleryController@create']);
+    $this->post('gallery/save',              ['as'=>'gallery.store',              'uses'=>'GalleryController@store']);
+    $this->get('gallery/edit/{id}',          ['as'=>'gallery.edit',               'uses'=>'GalleryController@edit']);
+    $this->put('gallery/update/{id}',        ['as'=>'gallery.update',             'uses'=>'GalleryController@update']);
+    $this->delete('gallery/delete/{id}',     ['as'=>'gallery.delete',             'uses'=>'GalleryController@delete']);
 
 
 
