@@ -16,6 +16,7 @@ class SiteConfigController extends AdminBaseController
 {
     protected $base_route = 'admin.site_configs';
     protected $view_path  = 'backend.site_config';
+    protected $scope=   'Manage Your Site Configurations';
 
     public function edit()
     {
@@ -35,18 +36,20 @@ class SiteConfigController extends AdminBaseController
     private function saveValues($request)
     {
        SiteConfigs::create([
-            'about_desc'     => $request->get('about_desc'),
+            'about_desc'     => $request->get('footer_desc'),
             'fb_link'        => $request->get('fb_link'),
             'g_plus'         => $request->get('g_plus'),
             'twitter'        => $request->get('twitter'),
-
-
+            'phone'          => $request->get('phone'),
        ]);
+
+       return redirect()->back();
     }
 
     private function updateValues($request, $id)
     {
-
+        $data = SiteConfigs::findOrFail($id);
+        dd($data);
     }
 
 }

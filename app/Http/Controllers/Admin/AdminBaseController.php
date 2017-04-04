@@ -21,6 +21,7 @@ class AdminBaseController extends AppBaseController
     protected $footer;
     protected $nav_bar;
     protected $header;
+    protected $scope;
 
 
     public function __construct()
@@ -36,14 +37,15 @@ class AdminBaseController extends AppBaseController
     public function loadDefaultVars($view_path)
     {
         View::composer($view_path, function($view) use ($view_path){
-            $view->with('base_route'    , $this->base_route);
-            $view->with('header'        ,$this->header);
-            $view->with('view_path'     , $this->view_path);
-            $view->with('css_path'      ,$this->css_path);
+            $view->with('base_route',   $this->base_route);
+            $view->with('header',       $this->header);
+            $view->with('view_path',    $this->view_path);
+            $view->with('css_path',     $this->css_path);
             $view->with('js_path',      $this->js_path);
-            $view->with('sidebar'       ,$this->sidebar);
-            $view->with('footer'         ,$this->footer);
+            $view->with('sidebar',      $this->sidebar);
+            $view->with('footer',       $this->footer);
             $view->with('nav_bar',      $this->nav_bar);
+            $view->with('scope',        $this->scope);
         });
         return $view_path;
     }

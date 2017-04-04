@@ -25,7 +25,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     <span class="pull-right-container">
@@ -61,7 +61,7 @@
                     <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="{{Request::is('admin/site-configs/*') ? 'active' : ''}}">
                 <a href="{{route('admin.site_configs.edit')}}">
                     <i class="fa fa-table"></i> <span>Site Configs</span>
                     <span class="pull-right-container">

@@ -1,7 +1,7 @@
 <div class="box-body">
     <div class="form-group">
         {{Form::label('About Description')}}
-        {{Form::textarea('about_desc', null,['class'=>'form-control','placeholder'=>'Enter About Description'])}}
+        {{Form::textarea('footer_desc', null,['class'=>'form-control','placeholder'=>'Enter About Description'])}}
     </div>
     <div class="form-group">
         {{Form::label('Facebook Link')}}
@@ -32,4 +32,5 @@
 <!-- /.box-body -->
 <div class="box-footer">
    {{Form::button($btnTxt,['class'=>"btn btn-primary", 'type'=>'Submit'])}}
+    {{Form::button('Reset',['class'=>"btn btn-danger", 'type'=>'Reset'])}}
 </div>

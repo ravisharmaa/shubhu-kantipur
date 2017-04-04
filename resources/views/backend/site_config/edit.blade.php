@@ -8,7 +8,7 @@
                     <h3 class="box-title">{{$scope}}</h3>
                 </div>
                 <!-- form start -->
-                {{Form::open(['route'=>$base_route.'.save', 'method'=>'post', 'role'=>'form'])}}
+                {{Form::model($site_config, ['route'=>[$base_route.'.update', $site_config->id], 'method'=>'PUT', 'role'=>'form'])}}
                     @include('backend.site_config.partials._form',['btnTxt'=>"Save"])
                 {{Form::close()}}
             </div>
