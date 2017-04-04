@@ -46,7 +46,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
-@yield('extra-scripts')
+
 <script src="{{asset($js_path.'jquery-2.2.3.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{asset($js_path.'bootstrap.min.js')}}"></script>
@@ -65,5 +65,6 @@
 <script src="plugins/chartjs/Chart.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>--}}
+@yield('extra-scripts')
 </body>
 </html>

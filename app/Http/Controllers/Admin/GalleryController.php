@@ -8,6 +8,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\AdminBaseController;
+use App\Model\Gallery;
+use Illuminate\Http\Request;
 
 
 class GalleryController extends AdminBaseController
@@ -18,7 +20,8 @@ class GalleryController extends AdminBaseController
 
     public function index()
     {
-        return view(parent::loadDefaultVars($this->view_path.'.index'));
+        $gallery = Gallery::select('id','name','image','status')->get();
+        return view(parent::loadDefaultVars($this->view_path.'.index'), compact('gallery'));
     }
 
     public function create()
@@ -26,9 +29,41 @@ class GalleryController extends AdminBaseController
         return view (parent::loadDefaultVars($this->view_path.'.create'));
     }
 
-    public function save()
+    public function store(Request $request)
     {
+       $imageName = null;
+       if($request->hasFile('image')){
+           $image       =   $request->file('image');
+           $imageName   =   $image->getClientOriginalName();
+           $imageName   =   pathinfo($imageName, PATHINFO_FILENAME);
+           $imageFile   =   $imageName.'.'.$image->getClientOriginalExtension();
+           $upload      =   $image->move(public_path().'/uploads/gallery/', $imageFile);
+       }
+            Gallery::create([
+                'name'      =>  $request->get('name'),
+                'image'     =>  $imageFile,
+                'status'    =>  $request->get('status'),
+            ]);
 
+       return redirect()->route($this->base_route.'.index');
+
+    }
+
+
+
+    public function changeStatus( Request $request)
+    {
+        $id      = $request->get('id');
+        $gallery = Gallery::findorFail($id);
+        if($gallery->status ==1 )
+            $gallery->status = 0;
+        else
+            $gallery->status = 1;
+        $gallery->save();
+        return response()->json(json_encode([
+            'success'=>true,
+            'status'=>$gallery->status,
+        ]));
     }
 
 
