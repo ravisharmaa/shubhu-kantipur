@@ -49,7 +49,13 @@ class SiteConfigController extends AdminBaseController
     private function updateValues($request, $id)
     {
         $data = SiteConfigs::findOrFail($id);
-        dd($data);
+        $data->footer_desc      = $request->get('footer_desc');
+        $data->fb_link          = $request->get('fb_link');
+        $data->g_plus           = $request->get('g_plus');
+        $data->twitter          = $request->get('twitter');
+        $data->phone            = $request->get('phone');
+        $data->save();
+        return redirect()->back();
     }
 
 }
