@@ -36,7 +36,7 @@ $this->group(['prefix'=>'admin/',           'as'=>'admin.',                  'na
     /*Gallery Mgmt Routes*/
     $this->get('gallery/index',              ['as'=>'gallery.index',              'uses'=>'GalleryController@index']);
     $this->get('gallery/create',             ['as'=>'gallery.create',             'uses'=>'GalleryController@create']);
-    $this->post('gallery/save',              ['as'=>'gallery.store',              'uses'=>'GalleryController@store']);
+    $this->post('gallery/save',              ['as'=>'gallery.save',              'uses'=>'GalleryController@store']);
     $this->get('gallery/edit/{id}',          ['as'=>'gallery.edit',               'uses'=>'GalleryController@edit']);
     $this->put('gallery/update/{id}',        ['as'=>'gallery.update',             'uses'=>'GalleryController@update']);
     $this->delete('gallery/delete/{id}',     ['as'=>'gallery.delete',             'uses'=>'GalleryController@delete']);

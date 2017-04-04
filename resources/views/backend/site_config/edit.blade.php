@@ -2,8 +2,8 @@
 
 @section('main-content')
     <div class="row">
-        <div class="col-xs-10">
-            <div class="box box-primary">
+        <div class="col-md-12">
+            <div class="box box-body">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{$scope}}</h3>
                 </div>
