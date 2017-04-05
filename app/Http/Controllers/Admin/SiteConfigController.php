@@ -31,23 +31,25 @@ class SiteConfigController extends AdminBaseController
 
     public function save(Request $request, $id=null)
     {
-        is_null($id)? $this->saveValues($request) : $this->updateValues($request, $id);
+        is_null($id) ? $this->saveValues($request) : $this->updateValues($request, $id);
+        return redirect()->route($this->base_route.'.edit');
     }
 
-    private function saveValues($request)
+    public function saveValues($request)
     {
         SiteConfigs::create([
-            'about_desc'     => $request->get('footer_desc'),
+            'footer_desc'     => $request->get('footer_desc'),
             'fb_link'        => $request->get('fb_link'),
             'g_plus'         => $request->get('g_plus'),
             'twitter'        => $request->get('twitter'),
             'phone'          => $request->get('phone'),
-       ]);
-
-       return redirect()->back();
+            'email'          => $request->get('email'),
+            'website'        => $request->get('website'),
+        ]);
+        return true;
     }
 
-    private function updateValues($request, $id)
+    public function updateValues($request, $id)
     {
         $data = SiteConfigs::findOrFail($id);
         $data->footer_desc      = $request->get('footer_desc');
@@ -55,8 +57,10 @@ class SiteConfigController extends AdminBaseController
         $data->g_plus           = $request->get('g_plus');
         $data->twitter          = $request->get('twitter');
         $data->phone            = $request->get('phone');
+        $data->email            = $request->get('email');
+        $data->website          = $request->get('website');
         $data->save();
-        return redirect()->back();
+        return true;
     }
 
 

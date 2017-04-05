@@ -2,7 +2,7 @@
 
     <div class="form-group">
         {{Form::label('Title')}}
-        {{Form::text('name', null,['class'=>'form-control','placeholder'=>'Enter Facebook Here'])}}
+        {{Form::text('name', null,['class'=>'form-control','placeholder'=>'Enter Image Title Here'])}}
     </div>
     <div class="form-group">
         {{Form::label('Image')}}

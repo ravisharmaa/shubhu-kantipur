@@ -5,8 +5,7 @@
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">{{$scope}}</h3>
-                &nbsp;
-                <a href="{{route($base_route.'.create')}}"><button class="btn btn-success">Create A Gallery Item</button></a>
+                &nbsp;<a href="{{route($base_route.'.create')}}"><button class="btn btn-success">Create A Gallery Item</button></a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -17,9 +16,10 @@
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
+                    <?php $i = 1; ?>
                     @foreach($gallery as $g)
                     <tr>
-                        <td>{{$g->id}}</td>
+                        <td>{{$i}}</td>
                         <td>{{$g->name}}</td>
                         <td>
                             @if($g->status==1)
@@ -32,15 +32,15 @@
                             <a href="{{route($base_route.'.edit', $g->id)}}">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
                             </a>
-
                             &nbsp;
                             <a href="{{route($base_route.'.delete', $g->id)}}">
                                 <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
                             </a>
                         </td>
-
                     </tr>
+                    <?php $i++; ?>
                     @endforeach
+
                     </tbody>
                 </table>
             </div>
@@ -58,8 +58,8 @@
                e.preventDefault();
                var t = $(this);
                var id = t.attr('data-attr');
-               var v_token = '{{ csrf_token() }}';
-               var params = {'id': id, '_token' : v_token};
+               var token = '{{ csrf_token() }}';
+               var params = {'id': id, '_token' : token};
                $.ajax({
                   method: "POST",
                   data : params,
@@ -68,18 +68,15 @@
                       console.log(request.responseText);
                   },
                   success:function (data) {
-                    var success = jQuery.parseJSON(data);
-                    if(success.status ==1 ){
-                        t.html("<span class='badge bg-green'> Active</span>");
-                    } else {
+                      var success = jQuery.parseJSON(data);
+                        if(success.status ==1 ){
+                            t.html("<span class='badge bg-green'> Active</span>");
+                        } else {
                         t.html("<span class='badge bg-red'> De-Active</span>");
-                    }
-
+                        }
                   }
-
                });
-
-           })
+            })
         });
     </script>
 @endsection
