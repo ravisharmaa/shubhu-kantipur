@@ -70,6 +70,13 @@ class GalleryController extends AdminBaseController
         ]));
     }
 
+    public function update(Request $request, $id)
+    {
+        dd($request);
+        $gallery = Gallery::findOrFail($id);
+
+    }
+
 
 
 }
