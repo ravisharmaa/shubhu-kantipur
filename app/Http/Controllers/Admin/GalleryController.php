@@ -49,7 +49,11 @@ class GalleryController extends AdminBaseController
 
     }
 
-
+    public function edit($id)
+    {
+        $gallery = Gallery::findOrFail($id);
+        return view ($this->loadDefaultVars($this->view_path.'.edit'), compact('gallery'));
+    }
 
     public function changeStatus( Request $request)
     {

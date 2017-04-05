@@ -19,7 +19,6 @@
                     </tr>
                     @foreach($gallery as $g)
                     <tr>
-
                         <td>{{$g->id}}</td>
                         <td>{{$g->name}}</td>
                         <td>
@@ -29,11 +28,21 @@
                                 <a href="" class="status" data-attr="{{$g->id}}"><span class="badge bg-red"> De-Active</span></a>
                             @endif
                         </td>
-                        <td><span class="badge bg-red">Edit/Delete</span></td>
+                        <td>
+                            <a href="{{route($base_route.'.edit', $g->id)}}">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
+                            </a>
+
+                            &nbsp;
+                            <a href="{{route($base_route.'.delete', $g->id)}}">
+                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                            </a>
+                        </td>
 
                     </tr>
                     @endforeach
-                    </tbody></table>
+                    </tbody>
+                </table>
             </div>
             <!-- /.box-body -->
         </div>
