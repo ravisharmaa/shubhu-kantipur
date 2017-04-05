@@ -42,6 +42,12 @@ $this->group(['prefix'=>'admin/',           'as'=>'admin.',                  'na
     $this->put('gallery/update/{id}',        ['as'=>'gallery.update',             'uses'=>'GalleryController@update']);
     $this->delete('gallery/delete/{id}',     ['as'=>'gallery.delete',             'uses'=>'GalleryController@delete']);
 
-
+    /*Rooms Mgmt Routes*/
+    $this->get('room/index',              ['as'=>'room.index',              'uses'=>'RoomController@index']);
+    $this->get('room/create',             ['as'=>'room.create',             'uses'=>'RoomController@create']);
+    $this->post('room/save',              ['as'=>'room.save',               'uses'=>'RoomController@store']);
+    $this->get('room/edit/{id}',          ['as'=>'room.edit',               'uses'=>'RoomController@edit']);
+    $this->put('room/update/{id}',        ['as'=>'room.update',             'uses'=>'RoomController@update']);
+    $this->delete('room/delete/{id}',     ['as'=>'room.delete',             'uses'=>'RoomController@delete']);
 
 });

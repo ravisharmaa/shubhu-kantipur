@@ -24,5 +24,6 @@
 <!-- /.box-body -->
 <div class="box-footer">
    {{Form::button($btnTxt,['class'=>"btn btn-primary", 'type'=>'Submit'])}}
+    &nbsp;
     {{Form::button('Reset',['class'=>"btn btn-danger", 'type'=>'reset'])}}
 </div>

@@ -19,38 +19,21 @@
             <li class="{{Request::is('admin/dashboard*') ? 'active' : ''}}">
                 <a href="{{route('admin.dashboard.index')}}">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
                 </a>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-pie-chart"></i>
-                    <span>Charts</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-                    <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                    <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                    <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-                </ul>
             </li>
             <li class="{{Request::is('admin/gallery/*') ? 'active' : ''}}">
                 <a href="{{route('admin.gallery.index')}}">
                     <i class="fa fa-image"></i> <span>Gallery Management</span>
-                    <span class="pull-right-container">
-            </span>
+                </a>
+            </li>
+            <li class="{{Request::is('admin/room/*') ? 'active' : ''}}">
+                <a href="{{route('admin.room.index')}}">
+                    <i class="fa fa-bed"></i> <span>Rooms Management</span>
                 </a>
             </li>
             <li class="{{Request::is('admin/site-configs/*') ? 'active' : ''}}">
                 <a href="{{route('admin.site_configs.edit')}}">
                     <i class="fa fa-cogs"></i> <span>Site Configs</span>
-                    <span class="pull-right-container">
-            </span>
                 </a>
             </li>
         </ul>
