@@ -22,6 +22,7 @@ class AdminBaseController extends AppBaseController
     protected $nav_bar;
     protected $header;
     protected $scope;
+    protected $title;
 
 
     public function __construct()
@@ -31,7 +32,7 @@ class AdminBaseController extends AppBaseController
         $this->sidebar       =   config('shubhu.backend_includes.sidebar');
         $this->footer        =   config('shubhu.backend_includes.footer');
         $this->nav_bar       =   config('shubhu.backend_includes.nav-bar');
-        $this->header       =    config('shubhu.backend_includes.header');
+        $this->header        =    config('shubhu.backend_includes.header');
     }
 
     public function loadDefaultVars($view_path)
@@ -46,6 +47,7 @@ class AdminBaseController extends AppBaseController
             $view->with('footer',       $this->footer);
             $view->with('nav_bar',      $this->nav_bar);
             $view->with('scope',        $this->scope);
+            $view->with('title',        $this->title);
         });
         return $view_path;
     }

@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Validator;
 
 class SiteConfigController extends AdminBaseController
 {
-    protected $base_route = 'admin.site_configs';
-    protected $view_path  = 'backend.site_config';
-    protected $scope=   'Manage Your Site Configurations';
+    protected $base_route =     'admin.site_configs';
+    protected $view_path  =     'backend.site_config';
+    protected $scope      =     'Manage Your Site Configurations';
+    protected $title      =     'Site Configs Management';
 
     public function edit()
     {

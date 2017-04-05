@@ -26,6 +26,11 @@
                     <i class="fa fa-image"></i> <span>Gallery Management</span>
                 </a>
             </li>
+            <li class="{{Request::is('admin/facility/*') ? 'active' : ''}}">
+                <a href="{{route('admin.facility.index')}}">
+                    <i class="fa fa-taxi"></i> <span>Facility Management</span>
+                </a>
+            </li>
             <li class="{{Request::is('admin/room/*') ? 'active' : ''}}">
                 <a href="{{route('admin.room.index')}}">
                     <i class="fa fa-bed"></i> <span>Rooms Management</span>
@@ -34,6 +39,11 @@
             <li class="{{Request::is('admin/site-configs/*') ? 'active' : ''}}">
                 <a href="{{route('admin.site_configs.edit')}}">
                     <i class="fa fa-cogs"></i> <span>Site Configs</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="{{url('/logout')}}">
+                    <i class="fa fa-power-off"></i> <span>Log Out</span>
                 </a>
             </li>
         </ul>

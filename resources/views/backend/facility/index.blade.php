@@ -5,35 +5,35 @@
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">{{$scope}}</h3>
-                &nbsp;<a href="{{route($base_route.'.create')}}"><button class="btn btn-success">Create A Gallery Item</button></a>
+                &nbsp;<a href="{{route($base_route.'.create')}}"><button class="btn btn-success">Create A Facility Type </button></a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <table class="table table-bordered">
                     <tbody><tr>
                         <th style="width: 10px">S.NO</th>
-                        <th>Image Details</th>
+                        <th>Facility Title</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
                     <?php $i = 1; ?>
-                    @foreach($gallery as $g)
+                    @foreach($facility as $f)
                     <tr>
                         <td>{{$i}}</td>
-                        <td>{{$g->name}}</td>
+                        <td>{{$f->facility_title}}</td>
                         <td>
-                            @if($g->status==1)
-                                <a href="" class="status" data-attr="{{$g->id}}"><span class="badge bg-green"> Active</span></a>
+                            @if($f->status==1)
+                                <a href="" class="status" data-attr="{{$f->id}}"><span class="badge bg-green"> Active</span></a>
                             @else
-                                <a href="" class="status" data-attr="{{$g->id}}"><span class="badge bg-red"> De-Active</span></a>
+                                <a href="" class="status" data-attr="{{$f->id}}"><span class="badge bg-red"> De-Active</span></a>
                             @endif
                         </td>
                         <td>
-                            <a href="{{route($base_route.'.edit', $g->id)}}">
+                            <a href="{{route($base_route.'.edit', $f->id)}}">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
                             </a>
                             &nbsp;
-                            <a href="{{route($base_route.'.delete', $g->id)}}">
+                            <a href="{{route($base_route.'.delete', $f->id)}}">
                                 <button type="submit" class="btn btn-danger" onclick="return confirm ('Are you sure to delete?')"><i class="fa fa-trash"></i> Delete</button>
                             </a>
                         </td>

@@ -2,17 +2,7 @@
 
     <div class="form-group">
         {{Form::label('Title')}}
-        {{Form::text('name', null,['class'=>'form-control','placeholder'=>'Enter Image Title Here'])}}
-    </div>
-    @if(!empty($gallery->image))
-    <div class="form-group">
-        <strong><p>Previous Image</p></strong>
-        <img src="{{asset('uploads/gallery/'.$gallery->image)}}" height="100" width="100">
-    </div>
-    @endif
-    <div class="form-group">
-        {{Form::label('Image')}}
-        {{Form::file('image')}}
+        {{Form::textarea('facility_title', null,['class'=>'form-control','placeholder'=>'Enter Facility Title Here'])}}
     </div>
     <div class="form-group">
         {{Form::label('Status')}} &nbsp;
@@ -21,7 +11,7 @@
     </div>
     <div class="form-group">
         {{Form::label('Order')}}
-        {{Form::number('order', null,['class'=>'form-control','min'=>'0', 'placeholder'=>'Input The Desired Order'])}}
+        {{Form::number('rank', null,['class'=>'form-control','min'=>'1', 'placeholder'=>'Enter The Desired Order'])}}
     </div>
 
 </div>

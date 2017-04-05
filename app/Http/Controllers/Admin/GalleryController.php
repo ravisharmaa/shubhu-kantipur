@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\AdminBaseController;
 use App\Model\Gallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 
 class GalleryController extends AdminBaseController
@@ -17,6 +18,7 @@ class GalleryController extends AdminBaseController
     protected $base_route = 'admin.gallery';
     protected $view_path  = 'backend.gallery';
     protected $scope      = "Manage Your Gallery";
+    protected $title      = 'Gallery Management';
 
     public function index()
     {
@@ -36,13 +38,14 @@ class GalleryController extends AdminBaseController
            $image       =   $request->file('image');
            $imageName   =   $image->getClientOriginalName();
            $imageName   =   pathinfo($imageName, PATHINFO_FILENAME);
-           $imageFile   =   $imageName.'.'.$image->getClientOriginalExtension();
+           $imageName   =   $imageName.'.'.$image->getClientOriginalExtension();
            $upload      =   $image->move(public_path().'/uploads/gallery/', $imageFile);
        }
             Gallery::create([
                 'name'      =>  $request->get('name'),
-                'image'     =>  $imageFile,
+                'image'     =>  $imageName,
                 'status'    =>  $request->get('status'),
+                'order'     =>  $request->get('order'),
             ]);
 
        return redirect()->route($this->base_route.'.index');
@@ -72,9 +75,19 @@ class GalleryController extends AdminBaseController
 
     public function update(Request $request, $id)
     {
-        dd($request);
         $gallery = Gallery::findOrFail($id);
+        $gallery->name      =   $request->get('name');
+        $gallery->status    =   $request->get('status');
+        $gallery->order     =   $request->get('order');
+        $gallery->save();
 
+    }
+    public function delete($id)
+    {
+        $data = Gallery::findOrFail($id);
+        File::delete(public_path().'/uploads/gallery/'. $data->image);
+        $data->delete();
+        return redirect()->route($this->base_route.'.index');
     }
 
 

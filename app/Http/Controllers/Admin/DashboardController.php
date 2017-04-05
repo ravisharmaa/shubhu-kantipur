@@ -14,9 +14,12 @@ class DashboardController extends AdminBaseController
 {
     protected $base_route = 'admin.dashboard';
     protected $view_path  = 'backend.dashboard.index';
+    protected $title      = 'Melungtse | Dashboard';
 
     public function __invoke()
     {
         return view (parent::loadDefaultVars($this->view_path));
     }
+
+
 }

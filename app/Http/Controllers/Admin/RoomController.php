@@ -14,6 +14,7 @@ class RoomController extends AdminBaseController
 {
     protected $base_route = 'admin.room';
     protected $view_path  = 'backend.room';
+    protected $title      = 'Rooms Management';
 
     public function index()
     {
