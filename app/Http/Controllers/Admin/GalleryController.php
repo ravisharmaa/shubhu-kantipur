@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminBaseController;
 use App\Model\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Lang;
 
 
 class GalleryController extends AdminBaseController
@@ -39,7 +40,7 @@ class GalleryController extends AdminBaseController
            $imageName   =   $image->getClientOriginalName();
            $imageName   =   pathinfo($imageName, PATHINFO_FILENAME);
            $imageName   =   $imageName.'.'.$image->getClientOriginalExtension();
-           $upload      =   $image->move(public_path().'/uploads/gallery/', $imageFile);
+           $upload      =   $image->move(public_path().'/uploads/gallery/', $imageName);
        }
             Gallery::create([
                 'name'      =>  $request->get('name'),
@@ -48,7 +49,10 @@ class GalleryController extends AdminBaseController
                 'order'     =>  $request->get('order'),
             ]);
 
-       return redirect()->route($this->base_route.'.index');
+       return redirect()->route($this->base_route.'.index')->with('message', Lang::get('response.CUSTOM_SUCCESS_MESSAGE',
+           [
+               'message' => 'New Gallery Item Has Been Added Successfully'
+           ]));
 
     }
 
@@ -87,7 +91,10 @@ class GalleryController extends AdminBaseController
         $data = Gallery::findOrFail($id);
         File::delete(public_path().'/uploads/gallery/'. $data->image);
         $data->delete();
-        return redirect()->route($this->base_route.'.index');
+        return redirect()->route($this->base_route.'.index')->with('message', Lang::get('response.CUSTOM_SUCCESS_DELETE',
+            [
+                'message' => 'Your entry has been deleted successfully'
+            ]));
     }
 
 

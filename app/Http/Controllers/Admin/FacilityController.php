@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminBaseController;
 use App\Model\Facility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Lang;
 
 
 class FacilityController extends AdminBaseController
@@ -38,7 +39,12 @@ class FacilityController extends AdminBaseController
                 'rank'             =>  $request->get('rank'),
                 'status'           =>  $request->get('status'),
             ]);
-        return redirect()->route($this->base_route.'.index');
+        return redirect()->route($this->base_route.'.index')->with('message',
+            Lang::get('response.CUSTOM_SUCCESS_MESSAGE',
+                [
+                    'message'=>'New Facility Has Been Added Successfully'
+                ])
+            );
 
     }
 
@@ -72,6 +78,8 @@ class FacilityController extends AdminBaseController
         $facility->status               =   $request->get('status');
         $facility->rank                 =   $request->get('rank');
         $facility->save();
+
+        return redirect()->route($this->base_route.'.index');
 
     }
     public function delete($id)

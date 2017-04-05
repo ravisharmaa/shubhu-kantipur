@@ -8,6 +8,9 @@
                 &nbsp;<a href="{{route($base_route.'.create')}}"><button class="btn btn-success">Create A Gallery Item</button></a>
             </div>
             <!-- /.box-header -->
+            @if(Session::has('message'))
+                {!! Session::get('message') !!}
+            @endif
             <div class="box-body">
                 <table class="table table-bordered">
                     <tbody><tr>
@@ -32,8 +35,7 @@
                             <a href="{{route($base_route.'.edit', $g->id)}}">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</button>
                             </a>
-                            &nbsp;
-                            <a href="{{route($base_route.'.delete', $g->id)}}">
+                            &nbsp;<a href="{{route($base_route.'.delete', $g->id)}}">
                                 <button type="submit" class="btn btn-danger" onclick="return confirm ('Are you sure to delete?')"><i class="fa fa-trash"></i> Delete</button>
                             </a>
                         </td>

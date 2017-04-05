@@ -8,6 +8,9 @@
                 &nbsp;<a href="{{route($base_route.'.create')}}"><button class="btn btn-success">Create A Facility Type </button></a>
             </div>
             <!-- /.box-header -->
+            @if(Session::has('message'))
+                {!! Session::get('message') !!}
+            @endif
             <div class="box-body">
                 <table class="table table-bordered">
                     <tbody><tr>
