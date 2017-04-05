@@ -10,8 +10,8 @@
                     <a href="{{route($base_route.'.index')}}"><button class="btn btn-success">Back To Gallery Index</button></a>
                 </div>
                 <!-- form start -->
-                {{Form::model($gallery, ['route'=>[$base_route.'.update', $gallery->id], 'method'=>'PUT', 'role'=>'form', 'enctype'=>'multipart/form-data','files'=>'true'])}}
-                    @include('backend.gallery.partials._form',['btnTxt'=>"Update"])
+                {{Form::model($facility, ['route'=>[$base_route.'.update', $facility->id], 'method'=>'PUT', 'role'=>'form'])}}
+                    @include('backend.facility.partials._form',['btnTxt'=>"Update"])
                 {{Form::close()}}
             </div>
         </div>

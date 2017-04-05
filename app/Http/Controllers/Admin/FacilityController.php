@@ -77,7 +77,7 @@ class FacilityController extends AdminBaseController
     public function delete($id)
     {
         $facility = Facility::findOrFail($id);
-        $data->delete();
+        $facility->delete();
         return redirect()->route($this->base_route.'.index');
     }
 
